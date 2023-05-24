@@ -1,10 +1,24 @@
 
-<mat-list>
-  <mat-list-item *ngFor="let event of events">
-    <h3 matListItemTitle>{{event.name}}</h3>
-    <img matListItemAvatar src="assets/images/110x110.jpg">
-    <p matListItemLine>
-      <span>{{event.description}}</span>
-    </p>
-  </mat-list-item>
-</mat-list>
+<div class="event-container">
+  <li class = "card" *ngFor="let event of events">
+    <div class="event-img">
+      <img src="{{event.photoURL}}">
+    </div>
+    <div class="event-detail">
+      <div class="event-info">
+        <h3>{{event.name}}</h3>
+        <mat-divider></mat-divider>
+        <span><mat-icon>location_on</mat-icon>{{event.place}}</span>
+        <br>
+        <span><mat-icon>calendar_today</mat-icon>{{event.date | date}}</span>
+        <br>
+        <span>{{event.description}}</span>
+
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="notify btn">Add to Notification</button>
+      <button class="favourite btn"><mat-icon>favorite</mat-icon></button>
+    </div>
+  </li>
+</div>
