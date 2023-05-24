@@ -5,6 +5,8 @@ import {AppComponent} from './app.component';
 import {RouterOutlet} from "@angular/router";
 import {EventListComponent} from './event-list/event-list.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from "../material.module";
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import {AppRoutingModule} from "./app-routing.module";
     EventListComponent
   ],
     imports: [
-        AppRoutingModule,
-        BrowserModule,
-        RouterOutlet
+      AppRoutingModule,
+      BrowserModule,
+      BrowserAnimationsModule,
+      MaterialModule
     ],
   providers: [],
   bootstrap: [AppComponent]

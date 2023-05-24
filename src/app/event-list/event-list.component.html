@@ -1,6 +1,10 @@
-<div>
-  <li *ngFor="let event of events">
-    <h2>{{event.name}}</h2>
-    <p>{{event.description}}</p>
-  </li>
-</div>
+
+<mat-list>
+  <mat-list-item *ngFor="let event of events">
+    <h3 matListItemTitle>{{event.name}}</h3>
+    <img matListItemAvatar src="assets/images/110x110.jpg">
+    <p matListItemLine>
+      <span>{{event.description}}</span>
+    </p>
+  </mat-list-item>
+</mat-list>
