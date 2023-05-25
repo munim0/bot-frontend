@@ -15,9 +15,9 @@ import {HttpClientModule} from "@angular/common/http";
     EventListComponent
   ],
     imports: [
-      HttpClientModule,
       AppRoutingModule,
       BrowserModule,
+      HttpClientModule,
       BrowserAnimationsModule,
       MaterialModule
     ],

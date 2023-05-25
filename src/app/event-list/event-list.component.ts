@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {defaultLogger} from "@angular/cdk/schematics/update-tool/logger";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TelegramService} from "../../_services/telegram.service";
 
 @Component({
@@ -9,7 +8,7 @@ import {TelegramService} from "../../_services/telegram.service";
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit{
-  constructor(private readonly http: HttpClient, private telegramService: TelegramService) {
+  constructor(private http: HttpClient, private telegramService: TelegramService) {
   }
 
   baseURL:string = "https://5641-46-34-195-79.ngrok-free.app/api/notification/";
@@ -63,13 +62,17 @@ export class EventListComponent implements OnInit{
   }
 
   addToNotification(event:any){
-    const headers = {'content-type': 'application/json'};
+    const headers = {'content-type':'application/json', 'ngrok-skip-browser-warning': 123,};
+    const reqOptions = {
+      headers: new HttpHeaders(headers)
+    }
     const notification = {
       event_info: event,
       receiver: this.userId? this.userId : 0,
       finish_date: event.date
     }
     const body = JSON.stringify(notification);
-    return this.http.post(this.baseURL + 'add', body, {'headers': headers});
+    const req = this.http.post(this.baseURL + 'add',body, reqOptions);
+    console.log(req);
   }
 }
