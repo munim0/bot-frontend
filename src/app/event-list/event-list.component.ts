@@ -72,7 +72,7 @@ export class EventListComponent implements OnInit{
       finish_date: event.date
     }
     const body = JSON.stringify(notification);
-    const req = this.http.post(this.baseURL + 'add',body, reqOptions);
+    const req = this.http.post(this.baseURL + 'add',body, reqOptions).subscribe();
     console.log(req);
   }
 }
