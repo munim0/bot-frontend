@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {defaultLogger} from "@angular/cdk/schematics/update-tool/logger";
+import {HttpClient} from "@angular/common/http";
+import {TelegramService} from "../../_services/telegram.service";
 
 @Component({
   selector: 'app-event-list',
@@ -7,7 +9,10 @@ import {defaultLogger} from "@angular/cdk/schematics/update-tool/logger";
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent implements OnInit{
+  constructor(private readonly http: HttpClient, private telegramService: TelegramService) {
+  }
 
+  baseURL:string = "http://localhost:3000/notification/add";
 
   events = [
     {
@@ -48,11 +53,18 @@ export class EventListComponent implements OnInit{
   ];
   public screenWidth: number | undefined;
   public screenHeight: number | undefined;
+  public userId: number |undefined;
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
-    console.log(this.screenWidth)
+    console.log(this.screenWidth);
+    this.userId = this.telegramService.getUserId();
   }
 
+  addToNotification(event:any){
+    const headers = {'content-type': 'application/json'};
+    const body = JSON.stringify(event)
+    console.log(body);
+  }
 }

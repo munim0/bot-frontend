@@ -7,6 +7,7 @@ import {EventListComponent} from './event-list/event-list.component';
 import {AppRoutingModule} from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "../material.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {MaterialModule} from "../material.module";
     EventListComponent
   ],
     imports: [
+      HttpClientModule,
       AppRoutingModule,
       BrowserModule,
       BrowserAnimationsModule,
