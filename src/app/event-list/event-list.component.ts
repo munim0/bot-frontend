@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {defaultLogger} from "@angular/cdk/schematics/update-tool/logger";
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss']
 })
-export class EventListComponent {
+export class EventListComponent implements OnInit{
+
+
   events = [
     {
       name: "Annual Charity Gala",
@@ -43,5 +46,13 @@ export class EventListComponent {
       photoURL: "assets/images/5.png"
     }
   ];
+  public screenWidth: number | undefined;
+  public screenHeight: number | undefined;
+
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+    console.log(this.screenWidth)
+  }
 
 }
