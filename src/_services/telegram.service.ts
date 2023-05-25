@@ -15,7 +15,6 @@ export class TelegramService {
   ) {}
 
   getUserId(): any {
-    console.log(this.telegram.user.id);
     return this.telegram.initDataUnsafe.user.id
   }
   showMainBtn(price: number): void {
