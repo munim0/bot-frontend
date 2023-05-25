@@ -12,7 +12,7 @@ export class EventListComponent implements OnInit{
   constructor(private readonly http: HttpClient, private telegramService: TelegramService) {
   }
 
-  baseURL:string = "http://localhost:3000/notification/add";
+  baseURL:string = "https://5641-46-34-195-79.ngrok-free.app/notification/";
 
   events = [
     {
@@ -64,7 +64,12 @@ export class EventListComponent implements OnInit{
 
   addToNotification(event:any){
     const headers = {'content-type': 'application/json'};
-    const body = JSON.stringify(event)
-    console.log(body);
+    const notification = {
+      event_info: event,
+      receiver: this.userId? this.userId : 0,
+      finish_date: event.date
+    }
+    const body = JSON.stringify(notification);
+    return this.http.post(this.baseURL + 'add', body, {'headers': headers});
   }
 }
