@@ -12,7 +12,7 @@ export class EventListComponent implements OnInit{
   constructor(private readonly http: HttpClient, private telegramService: TelegramService) {
   }
 
-  baseURL:string = "https://5641-46-34-195-79.ngrok-free.app/notification/";
+  baseURL:string = "https://5641-46-34-195-79.ngrok-free.app/api/notification/";
 
   events = [
     {
